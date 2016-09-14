@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \file html_css.tex
+%% \version 0.1
+%% \author Vilsafur
+%%
+%% Définition des règles spécifiques aux langages
+%% HTML et CSS
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Règles spécifique aux langages HTML5 et CSS3}
+
+\subsection{CSS}
+Nous utiliserons un détournement de la méthode \href{http://getbem.com/}{BEM} décrite dans l'article de tarh sur developpez.com : \url{http://tarh.developpez.com/articles/2014/bonnes-pratiques-en-css-bem-et-oocss/}.\\
+En voici les principaux axes :
+\begin{itemize}[label=\textbullet]
+  \item Nommage des classes :
+  \begin{itemize}
+    \item ComponentName
+    \item ComponentName.modifierName
+    \item ComponentName-descendantName
+    \item ComponentName-descendantName.modifierName
+    \item ComponentName.isStateOfComponent
+  \end{itemize}
+  \item Utilisation de classes "transversales".
+  \item Un composant ne contient aucune information de positionnement.
+  \item Ne pas utiliser une classe CSS pour une ancre JavaScript, préférer une classe nommée ".js-".
+\end{itemize}
+
+\subsection{SASS}
+Afin de faciliter l'écriture des fichiers CSS, nous utiliserons le préprocésseur SASS avec le language SCSS.\\
+De plus, nous utiliserons les normes suivantes :
+\begin{itemize}[label=\textbullet]
+  \item Les variables seront sous la forme : element-propriété
+  \item Les mixins et les fonctions seront nommés comme vue précédemment (cf \ref{nommageFonctions})
+\end{itemize}

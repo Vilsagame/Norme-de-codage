@@ -1,0 +1,53 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Exemple of a report
+%%
+%% Vilsafur
+%%
+%% v1   - 09/2016 :
+%%
+%% TODO :
+%%   - Norme de codage HTML/CSS
+%%   - Norme de codage Javascript
+%%   - Norme de codage C++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[french]{VGReport}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% GENERAL INFORMATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TODO Titre du document
+\title{Normes de codage}
+
+%TODO auteurs
+\author{
+    Vilsafur
+}
+
+\begin{document}
+
+% création de la page de titre
+\maketitle
+
+% création de la table des matières
+\MyToc
+
+% Justification moins stricte
+\sloppy
+
+\input{Sections/presentation} % a relire
+
+\newpage
+\input{Sections/commun} % a relire / refaire le 1.1
+
+\newpage
+\input{Sections/html_css}
+
+\newpage
+\input{Sections/php}
+
+%\input{Sections/javascript}
+
+%\input{Sections/cpp}
+
+\end{document}

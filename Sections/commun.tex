@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \file commun.tex
+%% \version 0.1
+%% \author Vilsafur
+%%
+%% Définition des règles communes aux langages
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Règles communes}
+
+Cette partie présentera les différentes normes présentes dans la plupart des langages utilisés. Elle comportera notamment les normes concernant les classes, les variables, etc...
+
+\subsection{Organisation du code}
+
+\subsubsection{Taille des fichiers}
+Un fichier ne devrait pas dépasser 1000 lignes de codes. Effectivement, un fichier supérieur à cette taille pourrait être difficile à relire.\\
+Outre cela, on pourrait conclure qu'un tel fichier est l'expression d'un mauvais découpage des traitement, d'une mauvaise compréhension de la conception/développemnt orienté objet. Ils traduisent généralement la présence de classe "gestionnaire" ayant accès à toutes les données possibles et imaginables. Or chaque classe devrait être responsable des traitement qui lui sont propres.
+
+\subsubsection{Taille des méthodes}
+Les méthodes ne devraient pas dépasser les méthodes de plus de 100 lignes. Certains traitements peuvent néanmoins justifier un dépassement de ce nombre de lignes, mais des méthodes trop longues traduisent un mauvais découpage d'algorithme et conduisent généralement à l'obtention d'un code incompréhensible.
+
+\subsection{Nommage}
+
+\subsubsection{Classes}
+\label{nommageClasses}
+
+\begin{itemize}[label=\textbullet]
+  \item Être en anglais,
+  \item Première lettre en majuscule,
+  \item Mélange de minuscule, majuscule avec la première lettre de chaque mot en majuscule,
+  \item Donner des noms simples et descriptifs,
+  \item Éviter les acronymes hormis les communs (Xml, Url, Html),
+  \item N'utiliser que des lettres [a-z][A-Z] et [0-9],
+  \item Ne jamais être un verbe ou une action.
+\end{itemize}
+
+\subsubsection{Fonctions}
+\label{nommageFonctions}
+
+\begin{itemize}[label=\textbullet]
+  \item Être en anglais,
+  \item Comporter que des lettres [a-z][A-Z] et [0-9],
+  \item Mélanger des minuscules et des majuscules avec la première lettre de chaque mot en majuscule ormis pour le premier mot,
+  \item Donner des noms simples et descriptifs.
+\end{itemize}
+\subsubsection{Variables}
+\label{nommageVariables}
+
+\begin{itemize}[label=\textbullet]
+  \item Être en anglais,
+  \item Comporter que des lettres [a-z][A-Z] et [0-9],
+  \item Commencer par une minuscule,
+  \item Mélanger des minuscules et des majuscules avec la première lettre de chaque mot en majuscule ormis pour le premier mots,
+  \item Donner des noms simples et descriptifs,
+  \item Variable d'une seule lettre à éviter au maximum sauf dans des cas précis et locaux (tour de boucle).
+\end{itemize}
+
+\subsubsection{Constantes}
+\label{nommageConstantes}
+
+\begin{itemize}[label=\textbullet]
+  \item Tout en majuscule,
+  \item Séparer les mots par des underscore,
+  \item Donner des noms simples et descriptifs,
+  \item N'utiliser que des lettres [a-z][A-Z] et [0-9].
+\end{itemize}
+
+\subsection{Lisibilité}
+
+\subsubsection{Indentation du code}
+Avoir une bonne indentation du code, pour certain langage (notamment Python), est plus que nécessaire, elle est indispensable. Nous allons donc définir ici les normes à respecter concernant l'indentation du code, et ce, quelque soit le projet ou le langage utilisé.
+
+\begin{itemize}[label=\textbullet]
+  \item Les tabulations sont remplacés par des espaces,
+  \item Une tabulation représente 2 caractères.
+\end{itemize}
+
+\subsection{Commentaire}
+Les commentaires occupent une grande place dans le code, quelque soit le langage utilisé. Ils permettent de mieux appréhender un code existant. Bien mis en place, nous pouvons même utiliser des outils permettant de générer automatiquement des fichiers de documentations.\\
+Nous allons donc voir comment les utiliser afin de pouvoir utiliser \href{http://www.stack.nl/~dimitri/doxygen/}{Doxygen} pour la génération de ces fameux fichiers.\\
+
+\subsubsection{Documentation des fichiers}
+
+\begin{itemize}[label=\textbullet]
+  \item \textbackslash file afin de définir un bloc de documentation pour un fichier,
+  \item \textbackslash version pour indiquer la version du fichier,
+  \item \textbackslash author, une balise par auteur,
+  \item Description du fichier.
+\end{itemize}
+
+\subsubsection{Documentation des namespace}
+
+\begin{itemize}[label=\textbullet]
+  \item \textbackslash namespace afin de définir un bloc de documentation pour un namespace,
+  \item Description du namespace.
+\end{itemize}
+
+\subsubsection{Documentation des classes}
+
+\begin{itemize}[label=\textbullet]
+  \item \textbackslash class afin de définir un bloc de documentation pour une classe,
+  \item Description de la classe,
+\end{itemize}
+
+\subsubsection{Documentation des fonctions}
+
+\begin{itemize}[label=\textbullet]
+  \item \textbackslash fn afin de définir un bloc de documentation pour une fonction,
+  \item \textbackslash param pour chaque paramètre de la fonction,
+  \item \textbackslash return pour définir le type de retour,
+  \item Description du fichier.
+\end{itemize}

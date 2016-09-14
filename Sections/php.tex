@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \file php.tex
+%% \version 0.1
+%% \author Vilsafur
+%%
+%% Définition des règles spécifiques au langage PHP
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Règles spécifique au langage PHP}
+Afin de respecter les standards utilisés par la majorité des développeurs, les règles cités ci-dessous seront, dans la majorité, issues des normes PSR.
+
+\subsection{autoloading}
+Comme le souligne le \href{http://www.php-fig.org/psr/psr-0/}{PSR-0}, pour qui l'objectif est de standardiser le chargement des classes et ainsi éviter les "include" et "require". Il se base sur la bonne utilisation des namespaces. En voici les règles :
+\begin{itemize}[label=\textbullet]
+  \item Les classes et les espaces de noms entièrement qualifiés doivent disposer de la structure suivante : \textbackslash\textbackslash<Nom du Vendor>\textbackslash\textbackslash(<Espace de noms>\textbackslash\textbackslash)*<Nom de la Classe>.
+  \item Chaque espace de noms doit avoir un espace de noms racine : ("Nom du Vendor").
+  \item Chaque espace de noms peut avoir autant de sous-espaces de noms qu'il le souhaite.
+  \item Chaque séparateur d'un espace de noms est converti en DIRECTORY\_SEPARATOR lors du chargement à partir du système de fichiers.
+  \item Chaque "\_" dans le nom d'une CLASSE est converti en DIRECTORY\_SEPARATOR. Le caractère "\_" n'a pas de signification particulière dans un espace de noms.
+  \item Les classes et espaces de noms complètement qualifiés sont suffixés avec ".php" lors du chargement à partir du système de fichiers.
+  \item Les caractères alphabétiques dans les noms de vendors, espaces de noms et noms de classes peuvent contenir n'importe quelle combinaison de minuscules et de majuscules.
+\end{itemize}
+
+L'utilisation de \href{https://getcomposer.org/}{Composer}, qui respecte cette norme, pour la gestion des fichiers d'autoload sera privilégié.
+
+\subsection{Les normes de codage de base}
+Le \href{http://www.php-fig.org/psr/psr-1/}{PSR-1} décrit décrit les éléments standards de codage nécessaires pour assurer un niveau élevé d'interopérabilité technique pour le partage du code PHP. Cette norme concerne : les fichiers, les espaces de nom et noms des classes ainsi que les constantes de classe, propriétés et méthodes. Nous en retiendrons les règles suivantes :
+\begin{itemize}[label=\textbullet]
+  \item Les fichiers DOIVENT utiliser seulement les tags <?php et <?=.
+  \item Les fichiers de code PHP DOIVENT être encodés uniquement en UTF-8 sans BOM.
+  \item Les fichiers DEVRAIENT soit déclarer des symboles (classes, fonctions, constantes, etc.) soit causer des effets secondaires (par exemple, générer des sorties, modifier paramètres .ini), mais NE DOIVENT PAS faire les deux.
+  \item Les espaces de noms et les classes DOIVENT suivre le point précédent.
+  \item Les noms des classes DOIVENT être déclarés comme StudlyCaps\footnote{\label{StudlyCaps}Chaque mot commence par une majuscule et sont collés les uns aux autres}.
+  \item Les constantes de classe DOIVENT être déclarées en majuscules avec un sous-tiret en séparateurs.
+  \item Les noms des méthodes DOIVENT être déclarés comme camelCase\footnote{\label{camelCase}Chaque mot, hormis le premier, commence par une majuscule et sont collés les uns aux autres}.
+\end{itemize}
+
+\subsection{Style d'écriture de code}
+La norme \href{http://www.php-fig.org/psr/psr-2/}{PSR-2} complète la norme PSR-1 et décrit les bonnes pratiques en matière de programmation. Nous retiendrons les points suivant :
+\begin{itemize}[label=\textbullet]
+  \item Le code DOIT suivre les points précédents.
+  \item Le code DOIT utiliser 2 espaces pour l'indentation et aucune tabulation.
+  \item La limite acceptable d'une ligne est de 120 caractères
+  \item Il DOIT y avoir une ligne vide après la déclaration de l'espace de noms, et il DOIT y avoir une ligne vide après le bloc de déclarations use.
+  \item L'ouverture des accolades pour les classes DOIT figurer sur la ligne suivante, les accolades de fermeture DOIVENT figurer sur la ligne suivante après le corps de la classe.
+  \item L'ouverture des accolades pour les méthodes DOIT figurer sur la ligne suivante, les accolades de fermeture DOIVENT figurer sur la ligne suivante après le corps de la méthode.
+  \item La visibilité DOIT être déclarée sur toutes les propriétés et méthodes; abstract et final doivent être déclarés avant la visibilité, static DOIT être déclaré après la visibilité
+  \item La structure des mots-clés de contrôle DOIT avoir un espace après eux, les méthodes et les appels de fonction NE DOIVENT PAS en avoir.
+  \item L'ouverture des accolades pour les structures de contrôle DOIT figurer sur la même ligne, et la fermeture des accolades DOIT figurer sur la ligne suivante après le corps.
+  \item L'ouverture des parenthèses pour les structures de contrôle NE DOIT PAS contenir d'espace après eux, la fermeture de parenthèses pour les structures de contrôle NE DOIT PAS contenir d'espace avant.
+\end{itemize}
+
+\subsection{Interface pour les logs}
+La norme PSR-3 définit comment seront définit les logs. En voici les concepts de base :
+\begin{itemize}
+  \item L'interface LoggerInterface expose huit méthodes pour écrire les logs pour les huit RFC 5424levels (debug, info, notice, warning, error, critical, alert, emergency).
+  \item Une neuvième méthode, log, accepte un niveau de journalisation en tant que premier argument. L'appel de cette méthode avec l'une des constantes du niveau de journalisation DOIT avoir le même résultat que l'appel de la méthode de niveau spécifique. L'appel de cette méthode avec un niveau non défini par cette spécification DOIT lancer un Psr\textbackslash\textbackslash Log\textbackslash\textbackslash InvalidArgumentException si l'implémentation ne reconnaît pas le niveau. Les utilisateurs NE DEVRAIENT PAS utiliser de niveau personnalisé sans savoir avec certitude si l'implémentation le supporte.
+\end{itemize}
+
+Afin de respecter au plus près cette norme, l'utilisation de \href{https://github.com/Seldaek/monolog}{monolog} est privilégié.
+
+\subsection{autoloading avancé}
+Le PRS-4 complète le PSR-0 en fixant les règles de l'arborescence des fichiers.
